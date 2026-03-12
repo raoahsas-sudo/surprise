@@ -244,7 +244,6 @@ font-size:18px;
 }
 </style>
 </head>
-
 <body>
 <!-- AUDIO -->
 <audio id="bgMusic" loop>
@@ -273,7 +272,7 @@ font-size:18px;
 
 <div class="page" id="page2">
 <h1>This idiot loves you more love ❤️</h1>
-<button onclick="startSlideshow()">Open your surprise</button>
+<button onclick="startExperience()">Open your surprise</button>
 </div>
 
 <div class="page" id="page3">
@@ -307,9 +306,9 @@ font-size:18px;
 <script>
 /* GIFT OPEN */
 function openGift(){
-let box=document.querySelector(".giftBox")
-box.classList.add("giftOpen")
-setTimeout(()=>{document.getElementById("giftScreen").style.display="none"},600)
+let box=document.querySelector(".giftBox");
+box.classList.add("giftOpen");
+setTimeout(()=>{document.getElementById("giftScreen").style.display="none"},600);
 }
 
 let pages=document.querySelectorAll(".page")
@@ -414,14 +413,21 @@ setTimeout(typeLetter,40)
 }}
 typeLetter()
 
-/* SPAWN FIREWORKS & MUSIC */
-function startSlideshow(){
-nextPage() // go to slideshow page
-document.getElementById("bgMusic").play()
-document.getElementById("crackers").play()
-setInterval(spawnFirework,1500)
+/* START MUSIC + FIRECRACKERS + FIREWORKS */
+function startExperience(){
+nextPage(); // move to slideshow page
+slideIndex=0;
+showSlide(slideIndex);
+let music=document.getElementById("bgMusic");
+let crackers=document.getElementById("crackers");
+music.volume=0.5;
+crackers.volume=0.15;
+music.play();
+crackers.play();
+setInterval(spawnFirework,1500);
 }
 
+/* FIREWORKS */
 function spawnFirework(){
 let fire=document.createElement("div")
 fire.style.position="fixed"
