@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <title>For You</title>
-
 <style>
 html,body{
 margin:0;
@@ -31,24 +30,29 @@ align-items:center;
 justify-content:center;
 z-index:10000;
 }
+
 .giftBox{
 font-size:90px;
 cursor:pointer;
 animation:giftFloat 2s infinite ease-in-out;
 }
+
 .giftText{
 margin-top:20px;
 font-size:18px;
 opacity:.8;
 }
+
 @keyframes giftFloat{
 0%{transform:translateY(0)}
 50%{transform:translateY(-12px)}
 100%{transform:translateY(0)}
 }
+
 .giftOpen{
 animation:giftOpen .6s forwards;
 }
+
 @keyframes giftOpen{
 0%{transform:scale(1)}
 100%{transform:scale(3);opacity:0}
@@ -64,6 +68,7 @@ height:100%;
 z-index:0;
 pointer-events:none;
 }
+
 .star{
 position:absolute;
 width:4px;
@@ -73,11 +78,13 @@ border-radius:50%;
 box-shadow:0 0 6px white,0 0 12px white,0 0 20px white;
 animation:twinkle 3s infinite ease-in-out;
 }
+
 @keyframes twinkle{
 0%{opacity:.3;transform:scale(.8)}
 50%{opacity:1;transform:scale(1.4)}
 100%{opacity:.3;transform:scale(.8)}
 }
+
 /* SHOOTING STAR */
 .shooting{
 position:absolute;
@@ -87,6 +94,7 @@ background:white;
 box-shadow:0 0 10px white,0 0 20px white;
 animation:shoot 5s linear;
 }
+
 @keyframes shoot{
 0%{transform:translate(-200px,-200px);opacity:1;}
 100%{transform:translate(1400px,700px);opacity:0;}
@@ -121,6 +129,7 @@ transition:opacity 1.2s ease;
 backdrop-filter:blur(6px);
 z-index:2;
 }
+
 .page.active{
 opacity:1;
 pointer-events:auto;
@@ -134,6 +143,7 @@ background:linear-gradient(45deg,#ffffff,#ffd4f3,#ff99da);
 text-shadow:0 0 12px rgba(255,160,220,0.7);
 animation:textFloat 7s ease-in-out infinite;
 }
+
 @keyframes textFloat{
 0%{transform:translateY(0)}
 50%{transform:translateY(-8px)}
@@ -152,6 +162,7 @@ margin-top:20px;
 box-shadow:0 0 15px rgba(255,120,200,0.6);
 transition:.3s;
 }
+
 button:hover{
 transform:scale(1.08);
 box-shadow:0 0 25px rgba(255,120,200,0.9);
@@ -172,6 +183,7 @@ text-align:center;
 .shake{
 animation:shake .4s;
 }
+
 @keyframes shake{
 0%{transform:translateX(0)}
 25%{transform:translateX(-8px)}
@@ -187,6 +199,7 @@ font-size:55px;
 animation:heartFloat linear forwards;
 opacity:.9;
 }
+
 @keyframes heartFloat{
 0%{transform:translateY(100vh)}
 100%{transform:translateY(-20vh);opacity:0;}
@@ -197,58 +210,48 @@ opacity:.9;
 width:500px;
 max-width:90%;
 position:relative;
-overflow:hidden;
 }
+
 .slide{
 position:absolute;
 width:100%;
 opacity:0;
-transition:opacity 1.2s ease, transform 1.5s ease;
+transition:opacity 1.2s ease;
 }
+
 .slide img{
 width:100%;
 border-radius:15px;
 box-shadow:0 0 25px rgba(255,120,200,0.5);
 }
+
 .slide.active{
 opacity:1;
 position:relative;
-transform:translateX(0);
 }
+
 .controls{
 margin-top:15px;
 display:flex;
 gap:20px;
 }
+
 .letter{
 max-width:600px;
 line-height:1.8;
 white-space:pre-line;
 font-size:18px;
 }
-
-/* FIREWORK */
-.firework{
-position:absolute;
-border-radius:50%;
-pointer-events:none;
-}
-
-/* AUDIO CONTROLS (hidden) */
-audio{
-display:none;
-}
 </style>
 </head>
 
 <body>
-
 <!-- AUDIO -->
 <audio id="bgMusic" loop>
-<source src="your-music.mp3" type="audio/mpeg">
+  <source src="your-music.mp3" type="audio/mpeg">
 </audio>
-<audio id="fireSound">
-<source src="firecracker.mp3" type="audio/mpeg">
+<audio id="crackers" loop>
+  <source src="firecrackers.mp3" type="audio/mpeg">
 </audio>
 
 <!-- GIFT INTRO -->
@@ -260,7 +263,6 @@ display:none;
 <div id="stars"></div>
 <div class="cursor" id="cursor"></div>
 
-<!-- PAGE 1 -->
 <div class="page active" id="page1">
 <h1>Before you open this…</h1>
 <p> Do you love this idiot of yours?</p>
@@ -269,13 +271,11 @@ display:none;
 <p id="response"></p>
 </div>
 
-<!-- PAGE 2 -->
 <div class="page" id="page2">
-<h1>This idiot loves you more ❤️</h1>
-<button onclick="nextPage()">Open your surprise</button>
+<h1>This idiot loves you more love ❤️</h1>
+<button onclick="startSlideshow()">Open your surprise</button>
 </div>
 
-<!-- PAGE 3 SLIDESHOW -->
 <div class="page" id="page3">
 <h1>May god always keep this cute little baccha of mine safe</h1>
 <div class="slideshow">
@@ -293,39 +293,32 @@ display:none;
 <button onclick="nextPage()">Next</button>
 </div>
 
-<!-- PAGE 4 LETTER -->
 <div class="page" id="page4">
 <h1>For My Love</h1>
 <p class="letter" id="letter"></p>
 <button onclick="nextPage()">Next</button>
 </div>
 
-<!-- PAGE 5 THANK YOU + FIREWORK -->
 <div class="page" id="page5">
 <h1>Happy Birthday To The Most Special Person In My Life❤️</h1>
-<p>Thank you for making me happy in ways I never imagined and making my life special.</p>
+<p>Thank you for making me happy in ways i never imagined and making my life special.</p>
 </div>
 
 <script>
 /* GIFT OPEN */
-let bgMusic=document.getElementById("bgMusic")
-let fireSound=document.getElementById("fireSound")
-
 function openGift(){
-document.querySelector(".giftBox").classList.add("giftOpen")
-setTimeout(()=>{
-document.getElementById("giftScreen").style.display="none"
-bgMusic.play()
-},600)
+let box=document.querySelector(".giftBox")
+box.classList.add("giftOpen")
+setTimeout(()=>{document.getElementById("giftScreen").style.display="none"},600)
 }
 
 let pages=document.querySelectorAll(".page")
 let currentPage=0
+
 function nextPage(){
 pages[currentPage].classList.remove("active")
 currentPage++
 pages[currentPage].classList.add("active")
-if(currentPage===4) startFireworks()
 }
 
 /* CHECK ANSWER */
@@ -348,8 +341,8 @@ response.innerText="This idiot loves you more ❤️"
 setTimeout(()=>{
 pages[0].classList.remove("active")
 pages[1].classList.add("active")
-spawnHearts()
 },2000)
+spawnHearts()
 }
 }
 
@@ -380,9 +373,7 @@ document.body.appendChild(heart)
 setTimeout(()=>heart.remove(),8000)
 }
 setInterval(()=>{
-if(currentPage!==2){
-spawnHearts()
-}
+if(currentPage!==2){spawnHearts()}
 },1500)
 
 /* CURSOR */
@@ -402,6 +393,7 @@ star.style.top=Math.random()*100+"vh"
 star.style.animationDelay=Math.random()*5+"s"
 stars.appendChild(star)
 }
+/* SHOOTING STARS */
 setInterval(()=>{
 let star=document.createElement("div")
 star.className="shooting"
@@ -419,36 +411,33 @@ if(i<text.length){
 document.getElementById("letter").innerHTML+=text.charAt(i)
 i++
 setTimeout(typeLetter,40)
-}
-}
+}}
 typeLetter()
 
-/* FIREWORKS */
-function startFireworks(){
-fireSound.play()
-for(let i=0;i<40;i++){
-let f=document.createElement("div")
-f.className="firework"
-f.style.width="6px"
-f.style.height="6px"
-f.style.background="radial-gradient(circle,#ff69b4,#fff)"
-f.style.left=Math.random()*100+"vw"
-f.style.top=Math.random()*50+"vh"
-f.style.opacity=1
-document.body.appendChild(f)
-animateFirework(f)
-setTimeout(()=>f.remove(),2500)
+/* SPAWN FIREWORKS & MUSIC */
+let fireworksInterval
+function startSlideshow(){
+nextPage() // go to slideshow page
+document.getElementById("bgMusic").play()
+document.getElementById("crackers").play()
+fireworksInterval = setInterval(spawnFirework,1500)
 }
-}
-function animateFirework(f){
-let angle=Math.random()*2*Math.PI
-let dist=50+Math.random()*80
-f.animate([
-{transform:"translate(0,0)"},
-{transform:`translate(${dist*Math.cos(angle)}px,${dist*Math.sin(angle)}px)`,opacity:0}
-],{duration:2000,iterations:1})
+
+function spawnFirework(){
+let fire=document.createElement("div")
+fire.style.position="fixed"
+fire.style.width="10px"
+fire.style.height="10px"
+fire.style.borderRadius="50%"
+fire.style.background="radial-gradient(circle, #ff6, #f00)"
+fire.style.left=Math.random()*90+"vw"
+fire.style.top=Math.random()*80+"vh"
+fire.style.opacity=1
+fire.style.zIndex=999
+document.body.appendChild(fire)
+let anim=fire.animate([{transform:"scale(0)",opacity:1},{transform:"scale(3)",opacity:0}],{duration:800})
+anim.onfinish=()=>fire.remove()
 }
 </script>
-
 </body>
 </html>
