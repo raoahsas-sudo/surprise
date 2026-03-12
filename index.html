@@ -3,9 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>For You</title>
-
 <style>
-/* ==== STYLES REMAIN UNCHANGED ==== */
 html,body{margin:0;padding:0;width:100%;height:100%;font-family:Poppins,sans-serif;background:#050512;color:white;overflow:hidden;cursor:none;}
 #giftScreen{position:fixed;top:0;left:0;width:100%;height:100%;background:#050512;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:10000;}
 .giftBox{font-size:90px;cursor:pointer;animation:giftFloat 2s infinite ease-in-out;}
@@ -73,7 +71,6 @@ input{padding:12px;border-radius:10px;border:none;margin-top:15px;background:#1c
 
 <div class="page" id="page3">
   <h1>May god always keep this cute little baccha of mine safe</h1>
-
   <div class="slideshow">
     <div class="slide active"><img src="photo1.jpg"></div>
     <div class="slide"><img src="photo2.jpg"></div>
@@ -82,12 +79,10 @@ input{padding:12px;border-radius:10px;border:none;margin-top:15px;background:#1c
     <div class="slide"><img src="photo5.jpg"></div>
     <div class="slide"><img src="photo6.jpg"></div>
   </div>
-
   <div class="controls">
-    <button onclick="prevSlide()">&lt;</button>
-    <button onclick="nextSlide()">&gt;</button>
+    <button onclick="prevSlide()">&#60;</button>
+    <button onclick="nextSlide()">&#62;</button>
   </div>
-
   <button onclick="nextPage()">Next</button>
 </div>
 
@@ -115,7 +110,7 @@ function openGift(){
   document.querySelector(".giftBox").classList.add("giftOpen");
   setTimeout(()=>{
     document.getElementById("giftScreen").style.display="none";
-    nextPage(); // show first page after gift
+    pages[0].classList.add("active"); // stay on first page
   },600);
 }
 
@@ -151,14 +146,10 @@ function checkAnswer(){
 
 // ==== SHOW SURPRISE ====
 function showSurprise(){
-  nextPage(); // page3
-  startMusicAndFire();
-}
-
-// ==== MUSIC & FIRE ====
-function startMusicAndFire(){
+  nextPage(); // show slideshow page
   bgMusic.play().catch(()=>console.log("Music blocked"));
   fireSound.play().catch(()=>console.log("Fire sound blocked"));
+  slideIndex=0; showSlide(slideIndex); // ensure first slide visible
 }
 
 // ==== SLIDESHOW ====
@@ -212,13 +203,7 @@ setInterval(()=>{
 // ==== LETTER TYPE ====
 let text="Love I wish you a very happy birthday and I thank god and your parents for bringing this beautiful soul into this not so beautiful world where you keep on making people smile by your sheer presence.Angel I want you to know that you are a fantastic human beings with your own beautiful flaws which you carry very elegantly and they make you the perfect Angel for me.I wish this birthday of yours brings a lot of happiness and clarity in your life and may your celebration get grander every year.I hope as we grow older our bond gets stronger and deeper with every passing day and year , may i get to be with you and celebrate my last breath with you by my side and afcourse never let you run out of lip glosses";
 let i=0;
-function typeLetter(){
-  if(i<text.length){
-    document.getElementById("letter").innerHTML+=text.charAt(i);
-    i++;
-    setTimeout(typeLetter,40);
-  }
-}
+function typeLetter(){if(i<text.length){document.getElementById("letter").innerHTML+=text.charAt(i); i++; setTimeout(typeLetter,40);}}
 typeLetter();
 </script>
 </body>
