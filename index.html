@@ -6,259 +6,40 @@
 
 <style>
 
-html,body{
-margin:0;
-padding:0;
-width:100%;
-height:100%;
-font-family:Poppins, sans-serif;
-background:#050512;
-color:white;
-overflow:hidden;
-cursor:none;
-}
-
-/* GIFT INTRO */
-
-#giftScreen{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:#050512;
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:center;
-z-index:10000;
-}
-
-.giftBox{
-font-size:90px;
-cursor:pointer;
-animation:giftFloat 2s infinite ease-in-out;
-}
-
-.giftText{
-margin-top:20px;
-font-size:18px;
-opacity:.8;
-}
-
-@keyframes giftFloat{
-0%{transform:translateY(0)}
-50%{transform:translateY(-12px)}
-100%{transform:translateY(0)}
-}
-
-.giftOpen{
-animation:giftOpen .6s forwards;
-}
-
-@keyframes giftOpen{
-0%{transform:scale(1)}
-100%{transform:scale(3);opacity:0}
-}
-
-/* STAR LAYER */
-
-#stars{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-z-index:0;
-pointer-events:none;
-}
-
-.star{
-position:absolute;
-width:4px;
-height:4px;
-background:white;
-border-radius:50%;
-box-shadow:0 0 6px white,0 0 12px white,0 0 20px white;
-animation:twinkle 3s infinite ease-in-out;
-}
-
-@keyframes twinkle{
-0%{opacity:.3;transform:scale(.8)}
-50%{opacity:1;transform:scale(1.4)}
-100%{opacity:.3;transform:scale(.8)}
-}
-
-/* SHOOTING STAR */
-
-.shooting{
-position:absolute;
-width:3px;
-height:3px;
-background:white;
-box-shadow:0 0 10px white,0 0 20px white;
-animation:shoot 5s linear;
-}
-
-@keyframes shoot{
-0%{transform:translate(-200px,-200px);opacity:1;}
-100%{transform:translate(1400px,700px);opacity:0;}
-}
-
-/* CURSOR */
-
-.cursor{
-position:fixed;
-width:18px;
-height:18px;
-border-radius:50%;
-background:white;
-box-shadow:0 0 15px white,0 0 30px #ff8bdc;
-pointer-events:none;
-z-index:9999;
-transform:translate(-50%,-50%);
-}
-
-/* PAGES */
-
-.page{
-position:absolute;
-width:100%;
-height:100%;
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:center;
-text-align:center;
-opacity:0;
-pointer-events:none;
-transition:opacity 1.2s ease;
-backdrop-filter:blur(6px);
-z-index:2;
-}
-
-.page.active{
-opacity:1;
-pointer-events:auto;
-}
-
-/* TEXT */
-
-h1,h2,p{
-background:linear-gradient(45deg,#ffffff,#ffd4f3,#ff99da);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-text-shadow:0 0 12px rgba(255,160,220,0.7);
-animation:textFloat 7s ease-in-out infinite;
-}
-
-@keyframes textFloat{
-0%{transform:translateY(0)}
-50%{transform:translateY(-8px)}
-100%{transform:translateY(0)}
-}
-
-/* BUTTON */
-
-button{
-padding:12px 24px;
-border:none;
-border-radius:12px;
-background:linear-gradient(45deg,#ff6fa5,#ff9ed6);
-color:white;
-cursor:pointer;
-margin-top:20px;
-box-shadow:0 0 15px rgba(255,120,200,0.6);
-transition:.3s;
-}
-
-button:hover{
-transform:scale(1.08);
-box-shadow:0 0 25px rgba(255,120,200,0.9);
-}
-
-/* INPUT */
-
-input{
-padding:12px;
-border-radius:10px;
-border:none;
-margin-top:15px;
-background:#1c1e4a;
-color:white;
-text-align:center;
-}
-
-/* SHAKE */
-
-.shake{
-animation:shake .4s;
-}
-
-@keyframes shake{
-0%{transform:translateX(0)}
-25%{transform:translateX(-8px)}
-50%{transform:translateX(8px)}
-75%{transform:translateX(-8px)}
-100%{transform:translateX(0)}
-}
-
-/* HEARTS */
-
-.heart{
-position:fixed;
-font-size:55px;
-animation:heartFloat linear forwards;
-opacity:.9;
-}
-
-@keyframes heartFloat{
-0%{transform:translateY(100vh)}
-100%{transform:translateY(-20vh);opacity:0;}
-}
-
-/* SLIDESHOW */
-
-.slideshow{
-width:500px;
-max-width:90%;
-position:relative;
-}
-
-.slide{
-position:absolute;
-width:100%;
-opacity:0;
-transition:opacity 1.2s ease;
-}
-
-.slide img{
-width:100%;
-border-radius:15px;
-box-shadow:0 0 25px rgba(255,120,200,0.5);
-}
-
-.slide.active{
-opacity:1;
-position:relative;
-}
-
-.controls{
-margin-top:15px;
-display:flex;
-gap:20px;
-}
-
-.letter{
-max-width:600px;
-line-height:1.8;
-white-space:pre-line;
-font-size:18px;
-}
+/* ==== STYLES REMAIN UNCHANGED ==== */
+html,body{margin:0;padding:0;width:100%;height:100%;font-family:Poppins,sans-serif;background:#050512;color:white;overflow:hidden;cursor:none;}
+#giftScreen{position:fixed;top:0;left:0;width:100%;height:100%;background:#050512;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:10000;}
+.giftBox{font-size:90px;cursor:pointer;animation:giftFloat 2s infinite ease-in-out;}
+.giftText{margin-top:20px;font-size:18px;opacity:.8;}
+@keyframes giftFloat{0%{transform:translateY(0)}50%{transform:translateY(-12px)}100%{transform:translateY(0)}}
+.giftOpen{animation:giftOpen .6s forwards;}
+@keyframes giftOpen{0%{transform:scale(1)}100%{transform:scale(3);opacity:0}}
+#stars{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;}
+.star{position:absolute;width:4px;height:4px;background:white;border-radius:50%;box-shadow:0 0 6px white,0 0 12px white,0 0 20px white;animation:twinkle 3s infinite ease-in-out;}
+@keyframes twinkle{0%{opacity:.3;transform:scale(.8)}50%{opacity:1;transform:scale(1.4)}100%{opacity:.3;transform:scale(.8)}}
+.shooting{position:absolute;width:3px;height:3px;background:white;box-shadow:0 0 10px white,0 0 20px white;animation:shoot 5s linear;}
+@keyframes shoot{0%{transform:translate(-200px,-200px);opacity:1;}100%{transform:translate(1400px,700px);opacity:0;}}
+.cursor{position:fixed;width:18px;height:18px;border-radius:50%;background:white;box-shadow:0 0 15px white,0 0 30px #ff8bdc;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);}
+.page{position:absolute;width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;opacity:0;pointer-events:none;transition:opacity 1.2s ease;backdrop-filter:blur(6px);z-index:2;}
+.page.active{opacity:1;pointer-events:auto;}
+h1,h2,p{background:linear-gradient(45deg,#ffffff,#ffd4f3,#ff99da);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-shadow:0 0 12px rgba(255,160,220,0.7);animation:textFloat 7s ease-in-out infinite;}
+@keyframes textFloat{0%{transform:translateY(0)}50%{transform:translateY(-8px)}100%{transform:translateY(0)}}
+button{padding:12px 24px;border:none;border-radius:12px;background:linear-gradient(45deg,#ff6fa5,#ff9ed6);color:white;cursor:pointer;margin-top:20px;box-shadow:0 0 15px rgba(255,120,200,0.6);transition:.3s;}
+button:hover{transform:scale(1.08);box-shadow:0 0 25px rgba(255,120,200,0.9);}
+input{padding:12px;border-radius:10px;border:none;margin-top:15px;background:#1c1e4a;color:white;text-align:center;}
+.shake{animation:shake .4s;}
+@keyframes shake{0%{transform:translateX(0)}25%{transform:translateX(-8px)}50%{transform:translateX(8px)}75%{transform:translateX(-8px)}100%{transform:translateX(0)}}
+.heart{position:fixed;font-size:55px;animation:heartFloat linear forwards;opacity:.9;}
+@keyframes heartFloat{0%{transform:translateY(100vh)}100%{transform:translateY(-20vh);opacity:0;}}
+.slideshow{width:500px;max-width:90%;position:relative;}
+.slide{position:absolute;width:100%;opacity:0;transition:opacity 1.2s ease;}
+.slide img{width:100%;border-radius:15px;box-shadow:0 0 25px rgba(255,120,200,0.5);}
+.slide.active{opacity:1;position:relative;}
+.controls{margin-top:15px;display:flex;gap:20px;}
+.letter{max-width:600px;line-height:1.8;white-space:pre-line;font-size:18px;}
 
 </style>
 </head>
-
 <body>
 
 <!-- BACKGROUND MUSIC -->
@@ -290,7 +71,7 @@ font-size:18px;
 
 <div class="page" id="page2">
 <h1>This idiot loves you more ❤️</h1>
-<button onclick="nextPage()">Open your surprise</button>
+<button onclick="nextPage(); startMusicAndFire();">Open your surprise</button>
 </div>
 
 <div class="page" id="page3">
@@ -326,140 +107,121 @@ font-size:18px;
 
 <script>
 
-// Preload all slideshow images
-let slideImages = ["photo1.jpg","photo2.jpg","photo3.jpg","photo4.jpg","photo5.jpg","photo6.jpg"];
-slideImages.forEach(src=>{
-    let img = new Image();
-    img.src = src;
-});
-
-// Music & Fire sound
-let bgMusic = document.getElementById("bgMusic");
-let fireSound = document.getElementById("fireSound");
-
-// GIFT OPEN
-function openGift(){
-    document.querySelector(".giftBox").classList.add("giftOpen");
-    setTimeout(()=>{
-        document.getElementById("giftScreen").style.display="none";
-        bgMusic.play().catch(()=>console.log("Music blocked"));
-        fireSound.play().catch(()=>console.log("Firecracker sound blocked"));
-    },600)
+// ==== MUSIC & FIRE ====
+// Only start after user clicks the second page button
+function startMusicAndFire(){
+  bgMusic.play().catch(()=>console.log("Music blocked"));
+  fireSound.play().catch(()=>console.log("Fire sound blocked"));
 }
 
-let pages=document.querySelectorAll(".page")
-let currentPage=0
+// ==== GIFT OPEN ====
+function openGift(){
+    document.querySelector(".giftBox").classList.add("giftOpen");
+    setTimeout(()=>{document.getElementById("giftScreen").style.display="none"},600)
+}
+
+let pages=document.querySelectorAll(".page");
+let currentPage=0;
 
 function nextPage(){
-pages[currentPage].classList.remove("active")
-currentPage++
-pages[currentPage].classList.add("active")
+pages[currentPage].classList.remove("active");
+currentPage++;
+pages[currentPage].classList.add("active");
 }
 
 function checkAnswer(){
-
-let input=document.getElementById("answer").value.toLowerCase()
-let response=document.getElementById("response")
-let page=document.getElementById("page1")
+let input=document.getElementById("answer").value.toLowerCase();
+let response=document.getElementById("response");
+let page=document.getElementById("page1");
 
 if(input==="no"){
-page.classList.add("shake")
-response.innerText="Try again."
-setTimeout(()=>page.classList.remove("shake"),400)
+page.classList.add("shake");
+response.innerText="Try again.";
+setTimeout(()=>page.classList.remove("shake"),400);
 }
-
 else if(input==="yes"){
-page.classList.add("shake")
-response.innerText="This idiot wants the whole line not just a yes."
-setTimeout(()=>page.classList.remove("shake"),400)
+page.classList.add("shake");
+response.innerText="This idiot wants the whole line not just a yes.";
+setTimeout(()=>page.classList.remove("shake"),400);
 }
-
 else{
-response.innerText="This idiot loves you more ❤️"
+response.innerText="This idiot loves you more ❤️";
 setTimeout(()=>{
-pages[0].classList.remove("active")
-pages[1].classList.add("active")
-},2000)
-spawnHearts()
+pages[0].classList.remove("active");
+pages[1].classList.add("active");
+},2000);
+spawnHearts();
+}
 }
 
-}
-
-let slideIndex=0
-let slides=document.querySelectorAll(".slide")
+// ==== SLIDESHOW ====
+let slideIndex=0;
+let slides=document.querySelectorAll(".slide");
 
 function showSlide(i){
-slides.forEach(s=>s.classList.remove("active"))
-slides[i].classList.add("active")
+slides.forEach(s=>s.classList.remove("active"));
+slides[i].classList.add("active");
 }
 
 function nextSlide(){
-slideIndex=(slideIndex+1)%slides.length
-showSlide(slideIndex)
+slideIndex=(slideIndex+1)%slides.length;
+showSlide(slideIndex);
 }
 
 function prevSlide(){
-slideIndex=(slideIndex-1+slides.length)%slides.length
-showSlide(slideIndex)
+slideIndex=(slideIndex-1+slides.length)%slides.length;
+showSlide(slideIndex);
 }
 
+// ==== HEARTS ====
 function spawnHearts(){
-let heart=document.createElement("div")
-heart.className="heart"
-heart.innerHTML="💖"
-heart.style.left=Math.random()*100+"vw"
-heart.style.animationDuration=6+Math.random()*4+"s"
-document.body.appendChild(heart)
-setTimeout(()=>heart.remove(),8000)
+let heart=document.createElement("div");
+heart.className="heart";
+heart.innerHTML="💖";
+heart.style.left=Math.random()*100+"vw";
+heart.style.animationDuration=6+Math.random()*4+"s";
+document.body.appendChild(heart);
+setTimeout(()=>heart.remove(),8000);
 }
 
-setInterval(()=>{
-if(currentPage!==2){
-spawnHearts()
-}
-},1500)
+setInterval(()=>{if(currentPage!==2){spawnHearts()}},1500);
 
-// CURSOR
-let cursor=document.getElementById("cursor")
-document.addEventListener("mousemove",e=>{
-cursor.style.left=e.clientX+"px"
-cursor.style.top=e.clientY+"px"
-})
+// ==== CURSOR ====
+let cursor=document.getElementById("cursor");
+document.addEventListener("mousemove",e=>{cursor.style.left=e.clientX+"px"; cursor.style.top=e.clientY+"px";});
 
-// STARS
-let stars=document.getElementById("stars")
+// ==== STARS ====
+let stars=document.getElementById("stars");
 for(let i=0;i<350;i++){
-let star=document.createElement("div")
-star.className="star"
-star.style.left=Math.random()*100+"vw"
-star.style.top=Math.random()*100+"vh"
-star.style.animationDelay=Math.random()*5+"s"
-stars.appendChild(star)
+let star=document.createElement("div");
+star.className="star";
+star.style.left=Math.random()*100+"vw";
+star.style.top=Math.random()*100+"vh";
+star.style.animationDelay=Math.random()*5+"s";
+stars.appendChild(star);
 }
 
-// SHOOTING STARS
+// ==== SHOOTING STARS ====
 setInterval(()=>{
-let star=document.createElement("div")
-star.className="shooting"
-star.style.left=Math.random()*100+"%"
-star.style.top=Math.random()*20+"%"
-stars.appendChild(star)
-setTimeout(()=>star.remove(),5000)
-},7000)
+let star=document.createElement("div");
+star.className="shooting";
+star.style.left=Math.random()*100+"%";
+star.style.top=Math.random()*20+"%";
+stars.appendChild(star);
+setTimeout(()=>star.remove(),5000);
+},7000);
 
-// LETTER TYPE
-let text="Love I wish you a very happy birthday and I thank god and your parents for bringing this beautiful soul into this not so beautiful world where you keep on making people smile by your sheer presence.Angel I want you to know that you are a fantastic human beings with your own beautiful flaws which you carry very elegantly and they make you the perfect Angel for me.I wish this birthday of yours brings a lot of happiness and clarity in your life and may your celebration get grander every year.I hope as we grow older our bond gets stronger and deeper with every passing day and year , may i get to be with you and celebrate my last breath with you by my side and afcourse never let you run out of lip glosses"
-let i=0
+// ==== LETTER TYPE ====
+let text="Love I wish you a very happy birthday and I thank god and your parents for bringing this beautiful soul into this not so beautiful world where you keep on making people smile by your sheer presence.Angel I want you to know that you are a fantastic human beings with your own beautiful flaws which you carry very elegantly and they make you the perfect Angel for me.I wish this birthday of yours brings a lot of happiness and clarity in your life and may your celebration get grander every year.I hope as we grow older our bond gets stronger and deeper with every passing day and year , may i get to be with you and celebrate my last breath with you by my side and afcourse never let you run out of lip glosses";
+let i=0;
 function typeLetter(){
 if(i<text.length){
-document.getElementById("letter").innerHTML+=text.charAt(i)
-i++
-setTimeout(typeLetter,40)
-}
-}
-typeLetter()
+document.getElementById("letter").innerHTML+=text.charAt(i);
+i++;
+setTimeout(typeLetter,40);
+}}
+typeLetter();
 
 </script>
-
 </body>
 </html>
