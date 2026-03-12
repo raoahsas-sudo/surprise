@@ -3,7 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <title>For You</title>
+
 <style>
+
 html,body{
 margin:0;
 padding:0;
@@ -17,6 +19,7 @@ cursor:none;
 }
 
 /* GIFT INTRO */
+
 #giftScreen{
 position:fixed;
 top:0;
@@ -59,6 +62,7 @@ animation:giftOpen .6s forwards;
 }
 
 /* STAR LAYER */
+
 #stars{
 position:fixed;
 top:0;
@@ -86,6 +90,7 @@ animation:twinkle 3s infinite ease-in-out;
 }
 
 /* SHOOTING STAR */
+
 .shooting{
 position:absolute;
 width:3px;
@@ -101,6 +106,7 @@ animation:shoot 5s linear;
 }
 
 /* CURSOR */
+
 .cursor{
 position:fixed;
 width:18px;
@@ -114,6 +120,7 @@ transform:translate(-50%,-50%);
 }
 
 /* PAGES */
+
 .page{
 position:absolute;
 width:100%;
@@ -136,6 +143,7 @@ pointer-events:auto;
 }
 
 /* TEXT */
+
 h1,h2,p{
 background:linear-gradient(45deg,#ffffff,#ffd4f3,#ff99da);
 -webkit-background-clip:text;
@@ -151,6 +159,7 @@ animation:textFloat 7s ease-in-out infinite;
 }
 
 /* BUTTON */
+
 button{
 padding:12px 24px;
 border:none;
@@ -169,6 +178,7 @@ box-shadow:0 0 25px rgba(255,120,200,0.9);
 }
 
 /* INPUT */
+
 input{
 padding:12px;
 border-radius:10px;
@@ -180,6 +190,7 @@ text-align:center;
 }
 
 /* SHAKE */
+
 .shake{
 animation:shake .4s;
 }
@@ -193,6 +204,7 @@ animation:shake .4s;
 }
 
 /* HEARTS */
+
 .heart{
 position:fixed;
 font-size:55px;
@@ -206,6 +218,7 @@ opacity:.9;
 }
 
 /* SLIDESHOW */
+
 .slideshow{
 width:500px;
 max-width:90%;
@@ -242,16 +255,20 @@ line-height:1.8;
 white-space:pre-line;
 font-size:18px;
 }
+
 </style>
 </head>
 
 <body>
-<!-- AUDIO -->
+
+<!-- BACKGROUND MUSIC -->
 <audio id="bgMusic" loop>
-  <source src="your-music.mp3" type="audio/mpeg">
+<source src="your-song.mp3" type="audio/mp3">
 </audio>
-<audio id="crackers" loop>
-  <source src="firecrackers.mp3" type="audio/mpeg">
+
+<!-- FIRECRACKER SOUND -->
+<audio id="fireSound" loop>
+<source src="firecracker.mp3" type="audio/mp3">
 </audio>
 
 <!-- GIFT INTRO -->
@@ -265,19 +282,20 @@ font-size:18px;
 
 <div class="page active" id="page1">
 <h1>Before you open this…</h1>
-<p> Do you love this idiot of yours?</p>
+<p>Do you love this idiot of yours?</p>
 <input id="answer" placeholder="Type your answer">
 <button onclick="checkAnswer()">Unlock</button>
 <p id="response"></p>
 </div>
 
 <div class="page" id="page2">
-<h1>This idiot loves you more love ❤️</h1>
-<button onclick="startSlideshow()">Open your surprise</button>
+<h1>This idiot loves you more ❤️</h1>
+<button onclick="nextPage()">Open your surprise</button>
 </div>
 
 <div class="page" id="page3">
 <h1>May god always keep this cute little baccha of mine safe</h1>
+
 <div class="slideshow">
 <div class="slide active"><img src="photo1.jpg"></div>
 <div class="slide"><img src="photo2.jpg"></div>
@@ -286,10 +304,12 @@ font-size:18px;
 <div class="slide"><img src="photo5.jpg"></div>
 <div class="slide"><img src="photo6.jpg"></div>
 </div>
+
 <div class="controls">
 <button onclick="prevSlide()"><</button>
 <button onclick="nextSlide()">></button>
 </div>
+
 <button onclick="nextPage()">Next</button>
 </div>
 
@@ -301,15 +321,30 @@ font-size:18px;
 
 <div class="page" id="page5">
 <h1>Happy Birthday To The Most Special Person In My Life❤️</h1>
-<p>Thank you for making me happy in ways i never imagined and making my life special.</p>
+<p>Thank you for making me happy in ways I never imagined and making my life special.</p>
 </div>
 
 <script>
-/* GIFT OPEN */
+
+// Preload all slideshow images
+let slideImages = ["photo1.jpg","photo2.jpg","photo3.jpg","photo4.jpg","photo5.jpg","photo6.jpg"];
+slideImages.forEach(src=>{
+    let img = new Image();
+    img.src = src;
+});
+
+// Music & Fire sound
+let bgMusic = document.getElementById("bgMusic");
+let fireSound = document.getElementById("fireSound");
+
+// GIFT OPEN
 function openGift(){
-let box=document.querySelector(".giftBox")
-box.classList.add("giftOpen")
-setTimeout(()=>{document.getElementById("giftScreen").style.display="none"},600)
+    document.querySelector(".giftBox").classList.add("giftOpen");
+    setTimeout(()=>{
+        document.getElementById("giftScreen").style.display="none";
+        bgMusic.play().catch(()=>console.log("Music blocked"));
+        fireSound.play().catch(()=>console.log("Firecracker sound blocked"));
+    },600)
 }
 
 let pages=document.querySelectorAll(".page")
@@ -321,21 +356,24 @@ currentPage++
 pages[currentPage].classList.add("active")
 }
 
-/* CHECK ANSWER */
 function checkAnswer(){
+
 let input=document.getElementById("answer").value.toLowerCase()
 let response=document.getElementById("response")
 let page=document.getElementById("page1")
+
 if(input==="no"){
 page.classList.add("shake")
 response.innerText="Try again."
 setTimeout(()=>page.classList.remove("shake"),400)
 }
+
 else if(input==="yes"){
 page.classList.add("shake")
 response.innerText="This idiot wants the whole line not just a yes."
 setTimeout(()=>page.classList.remove("shake"),400)
 }
+
 else{
 response.innerText="This idiot loves you more ❤️"
 setTimeout(()=>{
@@ -344,25 +382,27 @@ pages[1].classList.add("active")
 },2000)
 spawnHearts()
 }
+
 }
 
-/* SLIDESHOW */
 let slideIndex=0
 let slides=document.querySelectorAll(".slide")
+
 function showSlide(i){
 slides.forEach(s=>s.classList.remove("active"))
 slides[i].classList.add("active")
 }
+
 function nextSlide(){
 slideIndex=(slideIndex+1)%slides.length
 showSlide(slideIndex)
 }
+
 function prevSlide(){
 slideIndex=(slideIndex-1+slides.length)%slides.length
 showSlide(slideIndex)
 }
 
-/* HEARTS */
 function spawnHearts(){
 let heart=document.createElement("div")
 heart.className="heart"
@@ -372,18 +412,21 @@ heart.style.animationDuration=6+Math.random()*4+"s"
 document.body.appendChild(heart)
 setTimeout(()=>heart.remove(),8000)
 }
+
 setInterval(()=>{
-if(currentPage!==2){spawnHearts()}
+if(currentPage!==2){
+spawnHearts()
+}
 },1500)
 
-/* CURSOR */
+// CURSOR
 let cursor=document.getElementById("cursor")
 document.addEventListener("mousemove",e=>{
 cursor.style.left=e.clientX+"px"
 cursor.style.top=e.clientY+"px"
 })
 
-/* STARS */
+// STARS
 let stars=document.getElementById("stars")
 for(let i=0;i<350;i++){
 let star=document.createElement("div")
@@ -393,7 +436,8 @@ star.style.top=Math.random()*100+"vh"
 star.style.animationDelay=Math.random()*5+"s"
 stars.appendChild(star)
 }
-/* SHOOTING STARS */
+
+// SHOOTING STARS
 setInterval(()=>{
 let star=document.createElement("div")
 star.className="shooting"
@@ -403,7 +447,7 @@ stars.appendChild(star)
 setTimeout(()=>star.remove(),5000)
 },7000)
 
-/* LETTER TYPE */
+// LETTER TYPE
 let text="Love I wish you a very happy birthday and I thank god and your parents for bringing this beautiful soul into this not so beautiful world where you keep on making people smile by your sheer presence.Angel I want you to know that you are a fantastic human beings with your own beautiful flaws which you carry very elegantly and they make you the perfect Angel for me.I wish this birthday of yours brings a lot of happiness and clarity in your life and may your celebration get grander every year.I hope as we grow older our bond gets stronger and deeper with every passing day and year , may i get to be with you and celebrate my last breath with you by my side and afcourse never let you run out of lip glosses"
 let i=0
 function typeLetter(){
@@ -411,33 +455,11 @@ if(i<text.length){
 document.getElementById("letter").innerHTML+=text.charAt(i)
 i++
 setTimeout(typeLetter,40)
-}}
+}
+}
 typeLetter()
 
-/* SPAWN FIREWORKS & MUSIC */
-let fireworksInterval
-function startSlideshow(){
-nextPage() // go to slideshow page
-document.getElementById("bgMusic").play()
-document.getElementById("crackers").play()
-fireworksInterval = setInterval(spawnFirework,1500)
-}
-
-function spawnFirework(){
-let fire=document.createElement("div")
-fire.style.position="fixed"
-fire.style.width="10px"
-fire.style.height="10px"
-fire.style.borderRadius="50%"
-fire.style.background="radial-gradient(circle, #ff6, #f00)"
-fire.style.left=Math.random()*90+"vw"
-fire.style.top=Math.random()*80+"vh"
-fire.style.opacity=1
-fire.style.zIndex=999
-document.body.appendChild(fire)
-let anim=fire.animate([{transform:"scale(0)",opacity:1},{transform:"scale(3)",opacity:0}],{duration:800})
-anim.onfinish=()=>fire.remove()
-}
 </script>
+
 </body>
 </html>
